@@ -90,7 +90,7 @@ describe('normalizeUIKeys', function() {
   });
 });
 
-describe('Marionette.deprecate', function() {
+describe.skip('Marionette.deprecate', function() {
   beforeEach(function() {
     this.sinon.spy(Marionette.deprecate, '_warn');
     this.sinon.stub(Marionette.deprecate, '_console', {
