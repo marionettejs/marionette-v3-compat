@@ -31,7 +31,7 @@
     "url": "https://github.com/paulfalgout/marionette-v3-compat.git"
   },
   "dependencies": {
-    "backbone.marionette": "3.0.0-pre.3"
+    "backbone.marionette": "3.0.0-pre.4"
   },
   "peerDependencies": {
     "backbone": "1.2.1 - 1.3.2",
