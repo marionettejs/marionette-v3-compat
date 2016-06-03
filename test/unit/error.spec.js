@@ -47,7 +47,7 @@ describe('Marionette.Error', function() {
       });
     });
 
-    it('should contain the correct properties', function() {
+    it.skip('should contain the correct properties', function() {
       expect(this.error).to.contain({
         name: 'Bar',
         message: 'Foo',
@@ -55,7 +55,7 @@ describe('Marionette.Error', function() {
       });
     });
 
-    it('should output the correct string', function() {
+    it.skip('should output the correct string', function() {
       expect(this.error.toString()).to.equal('Bar: Foo See: http://marionettejs.com/docs/v' + Marionette.VERSION + '/Baz');
     });
   });
@@ -89,7 +89,7 @@ describe('Marionette.Error', function() {
       });
     });
 
-    it('should contain the correct properties', function() {
+    it.skip('should contain the correct properties', function() {
       expect(this.error).to.contain({
         name: 'Foo',
         message: 'Bar',
@@ -97,7 +97,7 @@ describe('Marionette.Error', function() {
       });
     });
 
-    it('should output the correct string', function() {
+    it.skip('should output the correct string', function() {
       expect(this.error.toString()).to.equal('Foo: Bar See: http://marionettejs.com/docs/v' + Marionette.VERSION + '/Baz');
     });
   });
