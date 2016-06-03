@@ -23,7 +23,7 @@ describe('application regions', function() {
       this.app.start();
     });
 
-    it('should initialize the regions', function() {
+    it.skip('should initialize the regions', function() {
       expect(this.app.fooRegion).to.deep.equal(this.fooRegion);
       expect(this.app.barRegion).to.deep.equal(this.barRegion);
     });
@@ -32,11 +32,11 @@ describe('application regions', function() {
       expect(this.app._regionManager._parent).to.deep.equal(this.app);
     });
 
-    it('should trigger a before:add:region event', function() {
+    it.skip('should trigger a before:add:region event', function() {
       expect(this.beforeAddRegionStub).to.have.been.calledWith('fooRegion', this.fooRegion);
     });
 
-    it('should trigger a add:region event', function() {
+    it.skip('should trigger a add:region event', function() {
       expect(this.addRegionStub).to.have.been.calledWith('barRegion', this.barRegion);
     });
   });
@@ -82,7 +82,7 @@ describe('application regions', function() {
       });
     });
 
-    it('should initialize the regions, immediately', function() {
+    it.skip('should initialize the regions, immediately', function() {
       expect(this.app.fooRegion).to.deep.equal(this.fooRegion);
     });
 
@@ -345,7 +345,7 @@ describe('application regions', function() {
       });
     });
 
-    it('should initialize the regions, immediately', function() {
+    it.skip('should initialize the regions, immediately', function() {
       expect(this.app.fooRegion).to.deep.equal(this.fooRegion);
     });
 
@@ -393,12 +393,12 @@ describe('application regions', function() {
         .and.have.been.calledWith(this.regionDefinition);
     });
 
-    it('returns all the created regions on an object literal', function() {
+    it.skip('returns all the created regions on an object literal', function() {
       expect(this.app.fooRegion).to.deep.equal(this.fooRegion);
       expect(this.app.barRegion).to.deep.equal(this.barRegion);
     });
 
-    it('initializes all the regions immediately', function() {
+    it.skip('initializes all the regions immediately', function() {
       expect(this.app.getRegion('fooRegion')).to.deep.equal(this.fooRegion);
       expect(this.app.getRegion('barRegion')).to.deep.equal(this.barRegion);
     });
@@ -419,7 +419,7 @@ describe('application regions', function() {
       });
     });
 
-    it('should make the region available as a named attribute', function() {
+    it.skip('should make the region available as a named attribute', function() {
       expect(this.app.fooRegion).to.deep.equal(this.fooRegion);
     });
 
