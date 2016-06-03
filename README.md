@@ -26,3 +26,8 @@ Patch({
 ```
 
 Todo: List available patches.
+
+
+
+## Known Issues
+In v2 options passed while instantiating an Application were merged onto the Application. This was removed in v3 and not re-implemented here.
