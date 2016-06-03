@@ -21,6 +21,10 @@ export default function() {
     addRegions: function(regionDefinitions, defaults) {
       regionDefinitions = Marionette._getValue(regionDefinitions, this, arguments);
 
+      if (!_.isEmpty(regionDefinitions)) {
+        Marionette.deprecate('RegionManager is deprecated and removed in v3.');
+      }
+
       return _.reduce(regionDefinitions, function(regions, definition, name) {
         if (_.isString(definition)) {
           definition = {selector: definition};
