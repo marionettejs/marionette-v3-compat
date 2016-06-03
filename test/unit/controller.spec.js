@@ -41,7 +41,7 @@ describe('marionette controller', function() {
       expect(this.initializeStub).to.have.been.calledOnce.and.calledWith(this.initializeOptions);
     });
 
-    it('should maintain a reference to the options', function() {
+    it.skip('should maintain a reference to the options', function() {
       expect(this.controller).to.have.property('options', this.initializeOptions);
     });
   });
