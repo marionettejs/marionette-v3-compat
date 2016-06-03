@@ -5,6 +5,9 @@ export default function() {
   _.extend(Marionette.Region, {
 
     buildRegion: function(regionConfig, DefaultRegionClass) {
+
+      Marionette.deprecate('Region Static Options are deprecated and removed in v3.');
+
       if (_.isString(regionConfig)) {
         return this._buildRegionFromSelector(regionConfig, DefaultRegionClass);
       }
