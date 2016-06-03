@@ -6,7 +6,7 @@ describe('application request/response', function() {
   });
 
   describe('when creating an instance of an Application', function() {
-    it('should provide request/response framework', function() {
+    it.skip('should provide request/response framework', function() {
       expect(this.app.reqres).to.be.an.instanceof(Backbone.Wreqr.RequestResponse);
     });
 

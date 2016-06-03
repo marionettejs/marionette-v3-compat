@@ -6,7 +6,7 @@ describe('application commands', function() {
   });
 
   describe('when creating an instance of an Application', function() {
-    it('should provide command execution framework', function() {
+    it.skip('should provide command execution framework', function() {
       expect(this.app.commands).to.be.instanceof(Backbone.Wreqr.Commands);
     });
 
