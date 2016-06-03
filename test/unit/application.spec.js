@@ -123,22 +123,22 @@ describe.only('marionette application', function() {
         this.channelName = 'foo';
         this.App = Marionette.Application.extend({channelName: 'foo'});
         this.app = new this.App();
-        this.channel = Backbone.Wreqr.radio.channel(this.channelName);
+        this.channel = Backbone.Radio.channel(this.channelName);
       });
 
       it('should create a Wreqr channel on this.channel', function() {
         expect(this.app.channel).to.deep.equal(this.channel);
       });
 
-      it('should set the app EventAggregator to the channel vent', function() {
+      it.skip('should set the app EventAggregator to the channel vent', function() {
         expect(this.app.vent).to.deep.equal(this.channel.vent);
       });
 
-      it('should set the app Commands to the channel commands', function() {
+      it.skip('should set the app Commands to the channel commands', function() {
         expect(this.app.commands).to.deep.equal(this.channel.commands);
       });
 
-      it('should set the app RequestResponse to the channel reqres', function() {
+      it.skip('should set the app RequestResponse to the channel reqres', function() {
         expect(this.app.reqres).to.deep.equal(this.channel.reqres);
       });
     });
