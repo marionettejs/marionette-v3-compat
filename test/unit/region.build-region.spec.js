@@ -261,7 +261,7 @@ describe('Region', function() {
           this.region = Marionette.buildRegion(this.definition, this.DefaultRegionClass);
         });
 
-        expect('it sets the region options', function() {
+        it('should set the region options', function() {
           expect(this.region.getOption('myRegionOption')).to.equal(42);
           expect(this.region.getOption('myOtherRegionOption')).to.equal('foobar');
         });
