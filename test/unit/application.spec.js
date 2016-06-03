@@ -1,4 +1,4 @@
-describe.only('marionette application', function() {
+describe('marionette application', function() {
   'use strict';
 
   describe('when registering an initializer and starting the application', function() {
