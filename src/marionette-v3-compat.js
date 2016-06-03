@@ -8,6 +8,7 @@ import ItemView from './ItemView';
 import LayoutView from './LayoutView';
 import Module from './Module';
 import RegionManager from './RegionManager';
+import RegionShowEvent from './RegionShowEvent';
 import regionsOnApplication from './regionsOnApplication';
 import regionsOnView from './regionsOnView';
 import RegionStaticMethods from './RegionStaticMethods';
@@ -31,6 +32,7 @@ export default function(opts = {}) {
     LayoutView,
     Module,
     RegionManager,
+    RegionShowEvent,
     regionsOnApplication,
     regionsOnView,
     RegionStaticMethods,
