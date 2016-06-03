@@ -12,11 +12,16 @@ export default function() {
     const regionEmpty = region.empty;
     const regionReset = region.reset;
     const regionOn = region.on;
+    const regionOnce = region.once;
 
     const newRegion = _.extend({}, region, {
       on() {
         dep();
         regionOn.apply(this, arguments);
+      },
+      once() {
+        dep();
+        regionOnce.apply(this, arguments);
       },
       show() {
         dep();
@@ -45,6 +50,13 @@ export default function() {
   Backbone.Events.listenTo = function(obj) {
     if (obj.__deprecatedRegion) { dep(); }
     listenTo.apply(this, arguments);
+  }
+
+  const listenToOnce = Backbone.Events.listenToOnce;
+
+  Backbone.Events.listenToOnce = function(obj) {
+    if (obj.__deprecatedRegion) { dep(); }
+    listenToOnce.apply(this, arguments);
   }
 
   const initRegions = Marionette.View.prototype._initRegions;
