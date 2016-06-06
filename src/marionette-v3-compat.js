@@ -3,7 +3,9 @@ import Marionette from 'backbone.marionette';
 
 import ApplicationWreqr from './ApplicationWreqr';
 import childEvents from './childEvents';
+import CollectionView from './CollectionView';
 import Controller from './Controller';
+import getChildView from './getChildView';
 import ItemView from './ItemView';
 import LayoutView from './LayoutView';
 import Module from './Module';
@@ -27,7 +29,9 @@ export default function(opts = {}) {
   const patches = _.extend({
     ApplicationWreqr,
     childEvents,
+    CollectionView,
     Controller,
+    getChildView,
     ItemView,
     LayoutView,
     Module,
