@@ -1,21 +1,14 @@
 import Marionette from 'backbone.marionette';
+import restoreFunction from './utils/restoreFunction';
 
 export default function() {
 
-  const originalGetChildView = Marionette.CollectionView.prototype._getChildView;
+  const originalPublicGetChildView = Marionette.View.prototype.getChildView;
 
-  Marionette.CollectionView = Marionette.CollectionView.extend({
-    getChildView() {
-      Marionette.deprecate('getChildView is deprecated. Use childView instead.');
-      return originalGetChildView.apply(this, arguments);
-    },
-    _getChildView() {
-      return this.getChildView.apply(this, arguments);
-    }
-  });
+  restoreFunction('_getChildView', 'getChildView', 'getChildView is deprecated. Use childView instead.', 'CollectionView');
+  restoreFunction('_getChildView', 'getChildView', 'getChildView is deprecated. Use childView instead.', 'View');
 
-  const originalPrivateGetChildView = Marionette.View.prototype._getChildView;
-  const originalPublicGetChildView = Marionette.View.prototype._getChildView;
+  const restoredPublicGetChildView = Marionette.View.prototype.getChildView;
 
   Marionette.View = Marionette.View.extend({
     getChildView() {
@@ -23,11 +16,7 @@ export default function() {
         return originalPublicGetChildView.apply(this, arguments);
       }
 
-      Marionette.deprecate('getChildView is deprecated. Use childView instead.');
-      return originalPrivateGetChildView.apply(this, arguments);
-    },
-    _getChildView() {
-      return this.getChildView.apply(this, arguments);
+      return restoredPublicGetChildView.apply(this, arguments);
     }
   });
 }
