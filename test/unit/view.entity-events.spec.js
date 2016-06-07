@@ -129,8 +129,8 @@ describe('view entity events', function() {
         collection : this.collection
       });
 
-      this.sinon.spy(this.view, 'undelegateEvents');
-      this.view.undelegateEvents();
+      this.sinon.spy(this.view, 'undelegateEntityEvents');
+      this.view.undelegateEntityEvents();
 
       this.model.trigger('foo');
       this.collection.trigger('bar');
@@ -145,7 +145,7 @@ describe('view entity events', function() {
     });
 
     it('should return the view', function() {
-      expect(this.view.undelegateEvents).to.have.returned(this.view);
+      expect(this.view.undelegateEntityEvents).to.have.returned(this.view);
     });
   });
 
