@@ -36,17 +36,19 @@ export default function() {
   var trigger = Backbone.Events.trigger;
 
   Backbone.Events.trigger = function(name) {
-    var methodName = 'on' + name.replace(splitter, getEventName);
-    var method = (this.options && this.options[methodName]) || this[methodName];
+    if (this.prototype instanceof Backbone.View || this === Backbone.View) {
+      var methodName = 'on' + name.replace(splitter, getEventName);
+      var method = (this.options && this.options[methodName]) || this[methodName];
 
-    if (_.isFunction(method)) {
-      dep();
-    }
+      if (_.isFunction(method)) {
+        dep();
+      }
 
-    if (!this._events) { return this; }
+      if (!this._events) { return this; }
 
-    if ((name === 'before:show' || name === 'show') && this._events[name]) {
-      dep();
+      if ((name === 'before:show' || name === 'show') && this._events[name]) {
+        dep();
+      }
     }
 
     return trigger.apply(this, arguments);
