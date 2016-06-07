@@ -44,3 +44,4 @@ Todo: List available patches.
 - Application: In v2 options passed while instantiating an Application were merged onto the Application. This was removed in v3 and not re-implemented here.
 
 - View.isRendered / View.isDestroyed flags in v2 are now functions in v3. This is not accounted for here.
+- View.triggers in v2 passed a object to the handler containing the view, model, and collection.  In v3 instead of this option, simply the view is passed (which will contain the model or collection anyhow).

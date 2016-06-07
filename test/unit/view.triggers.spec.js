@@ -31,16 +31,8 @@ describe('view triggers', function() {
       expect(this.fooHandlerStub).to.have.been.calledOnce;
     });
 
-    it('should include the view in the event args', function() {
-      expect(this.fooHandlerStub.lastCall.args[0]).to.contain({view: this.view});
-    });
-
-    it('should include the views model in the event args', function() {
-      expect(this.fooHandlerStub.lastCall.args[0]).to.contain({model: this.model});
-    });
-
-    it('should include the views collection in the event args', function() {
-      expect(this.fooHandlerStub.lastCall.args[0]).to.contain({collection: this.collection});
+    it('should be the view in the event args', function() {
+      expect(this.fooHandlerStub.lastCall.args[0]).to.eql(this.view);
     });
   });
 
