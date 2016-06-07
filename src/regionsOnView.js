@@ -7,7 +7,6 @@ export default function() {
   }
 
   function _addRegion(view, name, region) {
-    console.log(name);
     const regionShow = region.show;
     const regionEmpty = region.empty;
     const regionReset = region.reset;
@@ -52,9 +51,9 @@ export default function() {
     listenTo.apply(this, arguments);
   }
 
-  const initRegions = Marionette.View.prototype._initRegions;
+  const initRegions = Marionette.LayoutView.prototype._initRegions;
 
-  _.extend(Marionette.LayoutView, {
+  _.extend(Marionette.LayoutView.prototype, {
     _initRegions() {
       this.on({
         'add:region': _addRegion,
