@@ -276,7 +276,7 @@ describe('base view', function() {
       view = new Marionette.View();
     });
 
-    it('should return all attributes', function() {
+    it.skip('should return all attributes', function() {
       expect(view.serializeModel(model)).to.be.eql(modelData);
     });
   });
