@@ -12,17 +12,10 @@ export default function() {
   restoreFunction('_proxyChildEvents', 'proxyChildEvents', 'proxyChildEvents is now private.', 'CollectionView');
   restoreFunction('_addChild', 'addChild', 'addChild is now private.', 'CollectionView');
 
-  const originalRemoveChildView = Marionette.CollectionView.prototype.removeChildView;
-
   Marionette.CollectionView = Marionette.CollectionView.extend({
     initRenderBuffer() {
       Marionette.deprecate('initRenderBuffer is now private.');
       this._bufferedChildren = [];
-    },
-    removeChildView(view) {
-      Marionette.deprecate('removeChildView no longer returns the view.');
-      originalRemoveChildView.apply(this, arguments);
-      return view;
     }
   });
 }
