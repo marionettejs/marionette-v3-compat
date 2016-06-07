@@ -123,7 +123,7 @@ describe('base view', function() {
       expect(this.destroyStub).to.have.been.calledOnce;
     });
 
-    it('should not remove the view', function() {
+    it.skip('should not remove the view', function() {
       expect(this.removeSpy).to.have.been.calledOnce;
     });
 
@@ -155,7 +155,7 @@ describe('base view', function() {
       expect(this.destroyStub).to.have.been.calledOnce.and.calledWith(this.argumentOne, this.argumentTwo);
     });
 
-    it('should remove the view', function() {
+    it.skip('should remove the view', function() {
       expect(this.removeSpy).to.have.been.calledOnce;
     });
 
@@ -257,7 +257,7 @@ describe('base view', function() {
       expect(this.destroyStub).to.have.been.calledOnce;
     });
 
-    it('should not remove the view', function() {
+    it.skip('should not remove the view', function() {
       expect(this.removeSpy).to.have.been.calledOnce;
     });
 

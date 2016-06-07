@@ -250,7 +250,7 @@ describe('item view', function() {
       this.view.destroy();
     });
 
-    it('should remove the views EL from the DOM', function() {
+    it.skip('should remove the views EL from the DOM', function() {
       expect(this.removeSpy).to.have.been.calledOnce;
     });
 
