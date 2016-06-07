@@ -1,3 +1,5 @@
+import Marionette from 'backbone.marionette';
+
 export default function(privateFunction, publicFunction, deprecation, ClassName) {
   const original = Marionette[ClassName].prototype[privateFunction];
   const options = {};
