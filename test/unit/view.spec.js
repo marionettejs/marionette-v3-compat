@@ -4,7 +4,7 @@ describe('base view', function() {
   describe('when creating a view', function() {
     beforeEach(function() {
       this.initializeStub = this.sinon.stub();
-      this.viewConstructorSpy = this.sinon.spy(Backbone, 'View');
+      this.viewConstructorSpy = this.sinon.spy(Backbone.View.prototype, 'constructor');
 
       this.View = Marionette.View.extend({
         initialize: this.initializeStub
@@ -305,13 +305,17 @@ describe('base view', function() {
       this.childView = new this.ChildView();
       this.layoutView.render();
 
-      this.layoutEventHandler = this.sinon.spy();
+      this.layoutEventHandler = function(a,b,c) { }
+      this.layoutEventOnHandler = function(a,b,c) { }
+      this.layoutViewOnBoomHandler = function(a,b,c) { }
+
+      this.layoutEventHandler = this.sinon.spy(this, 'layoutEventHandler');
       this.layoutView.on('childview:boom', this.layoutEventHandler);
 
-      this.layoutEventOnHandler = this.sinon.spy();
+      this.layoutEventOnHandler = this.sinon.spy(this, 'layoutEventOnHandler');
       this.layoutView.onChildviewBoom = this.layoutEventOnHandler;
 
-      this.layoutViewOnBoomHandler = this.sinon.spy();
+      this.layoutViewOnBoomHandler = this.sinon.spy(this, 'layoutViewOnBoomHandler');
       this.layoutView.onBoom = this.layoutViewOnBoomHandler;
 
       this.childEventsFunction = _.bind(function() {
