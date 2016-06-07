@@ -52,13 +52,6 @@ export default function() {
     listenTo.apply(this, arguments);
   }
 
-  const listenToOnce = Backbone.Events.listenToOnce;
-
-  Backbone.Events.listenToOnce = function(obj) {
-    if (obj.__deprecatedRegion) { dep(); }
-    listenToOnce.apply(this, arguments);
-  }
-
   const initRegions = Marionette.View.prototype._initRegions;
 
   _.extend(Marionette.LayoutView, {
