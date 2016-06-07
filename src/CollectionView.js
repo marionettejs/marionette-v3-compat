@@ -13,6 +13,9 @@ export default function() {
   restoreFunction('_addChild', 'addChild', 'addChild is now private.', 'CollectionView');
 
   Marionette.CollectionView = Marionette.CollectionView.extend({
+    constructor() {
+      this.on('render:collection', function() { this.triggerMethod('render:children'); });
+    },
     initRenderBuffer() {
       Marionette.deprecate('initRenderBuffer is now private.');
       this._bufferedChildren = [];
