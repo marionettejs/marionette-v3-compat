@@ -25,9 +25,24 @@ Patch({
 });
 ```
 
-Todo: List available patches.
+##Available Patches
 
-
+- **ApplicationWreqr**: Global channel on Application - `app.vent` `app.reqres` and `app.commands` were removed from Application as well as the `app.request` and `app.execute` shortcuts.
+- **childEvents**: `childEvents` was renamed `childViewEvents`
+- **CollectionView**: `CollectionView` had a number of methods privatized
+- **Controller**: `Controller` was removed in v3
+- **getChildView**: `getChildView` was removed from both View and CollectionView as `childView` can now accept a function
+- **ItemView**: `Marionette.ItemView` is now `Marionette.View` in v3
+- **LayoutView**: `Marionette.LayoutView` is now `Marionette.View` in v3
+- **Module**: `Module` was removed in v3
+- **Region**: Region swap events were removed and `attachView` was privatized. By default `show` will not re-render a rendered view, so `attachView` is unnecessary.
+- **RegionManager**: `RegionManager` was removed in v3.
+- **RegionShowEvent**: Showing a view in a region no longer triggers a show event on the View in v3
+- **regionsOnApplication**: Region instances are no longer appended to the Application.  Application has only one region and to access it use `getRegion`.
+- **regionsOnApplication**: Region instances are no longer appended to the View.  Use `getRegion` to get the region by name from the view.
+- **RegionStaticMethods**: The static build methods for a Region were removed in v3.
+- **templateHelpers**: View's `templateHelpers` is now `templateContext` in v3
+- **triggerProxy**: View events proxied to a parent layout no longer automatically prepend the view as the 1st argument.
 
 ## Known Issues
 - Marionette v3 no longer uses Wreqr.  This library shims Radio over the Wreqr API.  If you are using Wreqr directly sharing channels they will not communicate with the Application's channel.
