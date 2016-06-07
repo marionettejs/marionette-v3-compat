@@ -77,7 +77,7 @@ describe('item view', function() {
     });
 
     it('should claim isRendered', function() {
-      expect(this.view.isRendered).to.be.true;
+      expect(this.view.isRendered()).to.be.true
     });
   });
 
@@ -107,10 +107,10 @@ describe('item view', function() {
   describe('when rendering', function() {
     beforeEach(function() {
       this.onBeforeRenderStub = this.sinon.spy(function() {
-        return this.isRendered;
+        return this.isRendered();
       });
       this.onRenderStub       = this.sinon.spy(function() {
-        return this.isRendered;
+        return this.isRendered();
       });
 
       this.View = Marionette.ItemView.extend({
@@ -153,7 +153,7 @@ describe('item view', function() {
     });
 
     it('should mark as rendered', function() {
-      expect(this.view).to.have.property('isRendered', true);
+      expect(this.view.isRendered()).to.be.true
     });
   });
 
@@ -222,14 +222,14 @@ describe('item view', function() {
     beforeEach(function() {
       this.onBeforeDestroyStub = this.sinon.spy(function() {
         return {
-          isRendered: this.isRendered,
-          isDestroyed: this.isDestroyed
+          isRendered: this.isRendered(),
+          isDestroyed: this.isDestroyed()
         };
       });
       this.onDestroyStub = this.sinon.spy(function() {
         return {
-          isRendered: this.isRendered,
-          isDestroyed: this.isDestroyed
+          isRendered: this.isRendered(),
+          isDestroyed: this.isDestroyed()
         };
       });
 
@@ -291,11 +291,11 @@ describe('item view', function() {
     });
 
     it('should be marked destroyed', function() {
-      expect(this.view).to.have.property('isDestroyed', true);
+      expect(this.view.isDestroyed()).to.be.true;
     });
 
     it('should be marked not rendered', function() {
-      expect(this.view).to.have.property('isRendered', false);
+      expect(this.view.isRendered()).to.be.false;
     });
   });
 

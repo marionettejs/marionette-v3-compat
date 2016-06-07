@@ -71,7 +71,7 @@ describe('base view', function() {
     });
 
     it('should set the view isDestroyed to true', function() {
-      expect(this.view).to.be.have.property('isDestroyed', true);
+      expect(this.view.isDestroyed()).to.be.true;
     });
 
     it('should return the View', function() {
@@ -94,12 +94,12 @@ describe('base view', function() {
       });
 
       it('should be set to false before destroy', function() {
-        expect(this.view).to.be.have.property('isDestroyed', false);
+        expect(this.view.isDestroyed()).to.be.false;
       });
 
       it('should be set to true after destroying', function() {
         this.view.destroy();
-        expect(this.view).to.be.have.property('isDestroyed', true);
+        expect(this.view.isDestroyed()).to.be.true;
       });
     });
   });
@@ -128,7 +128,7 @@ describe('base view', function() {
     });
 
     it('should not set the view isDestroyed to true', function() {
-      expect(this.view).to.be.have.property('isDestroyed', true);
+      expect(this.view.isDestroyed()).to.be.true;
     });
   });
 
@@ -160,7 +160,7 @@ describe('base view', function() {
     });
 
     it('should set the view isDestroyed to true', function() {
-      expect(this.view).to.have.property('isDestroyed', true);
+      expect(this.view.isDestroyed()).to.be.true;
     });
 
     it('should return the view', function() {
@@ -262,7 +262,7 @@ describe('base view', function() {
     });
 
     it('should leave isDestroyed as true', function() {
-      expect(this.view).to.be.have.property('isDestroyed', true);
+      expect(this.view.isDestroyed()).to.be.true;
     });
   });
 

@@ -30,8 +30,13 @@ Todo: List available patches.
 
 
 ## Known Issues
-- In v2 options passed while instantiating an Application were merged onto the Application. This was removed in v3 and not re-implemented here.
-
 - Marionette v3 no longer uses Wreqr.  This library shims Radio over the Wreqr API.  If you are using Wreqr directly sharing channels they will not communicate with the Application's channel.
 
 - Changes to `Marionette.deprecate` are not accounted for.
+
+
+###Unaccounted for breaking changes:
+
+- Application: In v2 options passed while instantiating an Application were merged onto the Application. This was removed in v3 and not re-implemented here.
+
+- View.isRendered / View.isDestroyed flags in v2 are now functions in v3. This is not accounted for here.

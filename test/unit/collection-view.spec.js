@@ -92,8 +92,8 @@ describe('collection view', function() {
         childEvents: {
           'render': 'onChildViewRender'
         },
-        onBeforeRender:           function() { return this.isRendered; },
-        onRender:                 function() { return this.isRendered; },
+        onBeforeRender:           function() { return this.isRendered(); },
+        onRender:                 function() { return this.isRendered(); },
         onBeforeAddChild:         this.sinon.stub(),
         onAddChild:               this.sinon.stub(),
         onBeforeRenderCollection: this.sinon.stub(),
@@ -225,7 +225,7 @@ describe('collection view', function() {
     });
 
     it('should be marked rendered', function() {
-      expect(this.collectionView).to.have.property('isRendered', true);
+      expect(this.collectionView.isRendered()).to.be.true;
     });
   });
 
@@ -660,14 +660,14 @@ describe('collection view', function() {
         someCallback: function() {},
         onBeforeDestroy: function() {
           return {
-            isRendered: this.isRendered,
-            isDestroyed: this.isDestroyed
+            isRendered: this.isRendered(),
+            isDestroyed: this.isDestroyed()
           };
         },
         onDestroy: function() {
           return {
-            isRendered: this.isRendered,
-            isDestroyed: this.isDestroyed
+            isRendered: this.isRendered(),
+            isDestroyed: this.isDestroyed()
           };
         }
       });
@@ -784,11 +784,11 @@ describe('collection view', function() {
     });
 
     it('should be marked destroyed', function() {
-      expect(this.collectionView).to.have.property('isDestroyed', true);
+      expect(this.collectionView.isDestroyed()).to.be.true;
     });
 
     it('should be marked not rendered', function() {
-      expect(this.collectionView).to.have.property('isRendered', false);
+      expect(this.collectionView.isRendered()).to.be.false;
     });
 
     it('should not call checkEmpty', function() {

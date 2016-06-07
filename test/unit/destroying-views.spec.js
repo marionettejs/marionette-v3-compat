@@ -4,7 +4,7 @@ describe('destroying views', function() {
   describe('when destroying a Marionette.View multiple times', function() {
     beforeEach(function() {
       this.onDestroyStub = this.sinon.spy(function() {
-        return this.isRendered;
+        return this.isRendered();
       });
 
       this.view = new Marionette.View();
@@ -19,7 +19,7 @@ describe('destroying views', function() {
     });
 
     it('should mark the view as destroyed', function() {
-      expect(this.view).to.have.property('isDestroyed', true);
+      expect(this.view.isDestroyed()).to.be.true;
     });
   });
 
@@ -39,7 +39,7 @@ describe('destroying views', function() {
     });
 
     it('should mark the view as destroyed', function() {
-      expect(this.itemView).to.have.property('isDestroyed', true);
+      expect(this.itemView.isDestroyed()).to.be.true;
     });
   });
 
@@ -71,7 +71,7 @@ describe('destroying views', function() {
     });
 
     it('should mark the view as destroyed', function() {
-      expect(this.collectionView).to.have.property('isDestroyed', true);
+      expect(this.collectionView.isDestroyed()).to.be.true;
     });
   });
 
@@ -103,7 +103,7 @@ describe('destroying views', function() {
     });
 
     it('should mark the view as destroyed', function() {
-      expect(this.compositeView).to.have.property('isDestroyed', true);
+      expect(this.compositeView.isDestroyed()).to.be.true;
     });
   });
 
