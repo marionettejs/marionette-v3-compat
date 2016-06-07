@@ -37,6 +37,10 @@ Todo: List available patches.
 
 ###Unaccounted for breaking changes:
 
+- Region: before:show / show events in v2 passed the view, the region, and options, but in v3 pass the region, the view and options
+- Region: before:empty / empty events in v3 now pass the region as the first argument
+- Region: before:destroy / destroy events in v3 now pass the region as the first argument
+
 - Application: In v2 options passed while instantiating an Application were merged onto the Application. This was removed in v3 and not re-implemented here.
 
 - View.isRendered / View.isDestroyed flags in v2 are now functions in v3. This is not accounted for here.
