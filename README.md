@@ -36,7 +36,7 @@ Patch({
 - **LayoutView**: `Marionette.LayoutView` is now `Marionette.View` in v3
 - **Module**: `Module` was removed in v3
 - **Region**: Region swap events were removed and `attachView` was privatized. By default `show` will not re-render a rendered view, so `attachView` is unnecessary.
-- **RegionManager**: `RegionManager` was removed in v3.
+- **RegionManager**: `RegionManager` was removed in v3. The `Marionette.actAsCollection` utility was only used by `RegionManager`, so it was also removed.
 - **RegionShowEvent**: Showing a view in a region no longer triggers a show event on the View in v3
 - **regionsOnApplication**: Region instances are no longer appended to the Application.  Application has only one region and to access it use `getRegion`.
 - **regionsOnApplication**: Region instances are no longer appended to the View.  Use `getRegion` to get the region by name from the view.
