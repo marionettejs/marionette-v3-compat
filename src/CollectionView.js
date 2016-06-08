@@ -12,9 +12,12 @@ export default function() {
   restoreFunction('_proxyChildEvents', 'proxyChildEvents', 'proxyChildEvents is now private.', 'CollectionView');
   restoreFunction('_addChild', 'addChild', 'addChild is now private.', 'CollectionView');
 
+  const originalConstructor = Marionette.Region.prototype.constructor;
+
   Marionette.CollectionView = Marionette.CollectionView.extend({
     constructor() {
       this.on('render:collection', function() { this.triggerMethod('render:children'); });
+      originalConstructor.apply(this, arguments);
     },
     initRenderBuffer() {
       Marionette.deprecate('initRenderBuffer is now private.');
