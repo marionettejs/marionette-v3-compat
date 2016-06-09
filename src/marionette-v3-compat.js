@@ -19,6 +19,7 @@ import regionsOnView from './regionsOnView';
 import RegionStaticMethods from './RegionStaticMethods';
 import templateHelpers from './templateHelpers';
 import triggerProxy from './triggerProxy';
+import viewOptions from './viewOptions';
 
 Marionette.VERSION = 'marionette-v3-compat';
 
@@ -48,7 +49,8 @@ export default function(opts = {}) {
     regionsOnView,
     RegionStaticMethods,
     templateHelpers,
-    triggerProxy
+    triggerProxy,
+    viewOptions
   }, opts);
 
   _.mapObject(patches, function(patch) {
