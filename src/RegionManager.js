@@ -135,6 +135,8 @@ export default function() {
       'contains', 'invoke', 'toArray', 'first', 'initial', 'rest',
       'last', 'without', 'isEmpty', 'pluck'];
 
+    Marionette.deprecate('actAsCollection is deprecated and removed in v3.');
+
     _.each(methods, function(method) {
       object[method] = function() {
         var list = _.values(_.result(this, listProperty));
