@@ -9,6 +9,7 @@ import getChildView from './getChildView';
 import ItemView from './ItemView';
 import LayoutView from './LayoutView';
 import Module from './Module';
+import proxyFunctions from './proxyFunctions';
 import Region from './Region';
 import RegionManager from './RegionManager';
 import RegionShowEvent from './RegionShowEvent';
@@ -37,6 +38,7 @@ export default function(opts = {}) {
     ItemView,
     LayoutView,
     Module,
+    proxyFunctions,
     Region,
     RegionManager,
     RegionShowEvent,
