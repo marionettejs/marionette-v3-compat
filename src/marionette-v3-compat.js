@@ -5,6 +5,7 @@ import ApplicationWreqr from './ApplicationWreqr';
 import childEvents from './childEvents';
 import CollectionView from './CollectionView';
 import Controller from './Controller';
+import deprecatedEvents from './deprecatedEvents';
 import getChildView from './getChildView';
 import ItemView from './ItemView';
 import LayoutView from './LayoutView';
@@ -33,6 +34,7 @@ export default function(opts = {}) {
     childEvents,
     CollectionView,
     Controller,
+    deprecatedEvents,
     getChildView,
     ItemView,
     LayoutView,
