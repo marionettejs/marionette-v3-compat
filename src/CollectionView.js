@@ -16,7 +16,7 @@ export default function() {
 
   Marionette.CollectionView = Marionette.CollectionView.extend({
     constructor() {
-      this.on('render:collection', function() { this.triggerMethod('render:children'); });
+      this.on('render:collection', function() { this.triggerMethod('render:children', this); });
       originalConstructor.apply(this, arguments);
     },
     initRenderBuffer() {
