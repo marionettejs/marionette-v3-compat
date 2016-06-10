@@ -19,7 +19,7 @@ const buildPath = 'lib/';
 gulp.task('build', ['lint-src'], function() {
   return rollup({
     entry: srcPath + name + '.js',
-    external: ['underscore', 'backbone', 'backbone.marionette'],
+    external: ['underscore', 'backbone', 'backbone.radio', 'backbone.marionette'],
     plugins: [
       json(),
       babel({
@@ -32,8 +32,10 @@ gulp.task('build', ['lint-src'], function() {
     return bundle.generate({
       format: 'umd',
       sourceMap: true,
+      moduleName: 'mnV3Compat',
       globals: {
-        'marionette': 'Marionette',
+        'backbone.marionette': 'Marionette',
+        'backbone.radio': 'Radio',
         'backbone': 'Backbone',
         'underscore': '_'
       }

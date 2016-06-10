@@ -1,4 +1,6 @@
+import _ from 'underscore';
 import Backbone from 'backbone';
+import Marionette from 'backbone.marionette';
 
 export default function() {
   const deprecatedEvents = ['render:collection'];
