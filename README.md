@@ -4,7 +4,7 @@ Transitional monkey patch to make Marionette v3 compatible with v2.
 **Do NOT use this library in production!** This library is meant as a transitional tool only.
 It is not guaranteed to be 100% backwards compatible and it will certainly be less performant.
 
-Currently using v3.0.0-pre.3.
+Currently using v3.0.0-pre.4.
 
 Include and execute this library directly after marionette prior to using the library.
 
@@ -25,7 +25,11 @@ Patch({
 });
 ```
 
-##Available Patches
+## Current backport or shimming
+
+If you are currently backporting v3 functionality or shimming in Radio for Wreqr you may need to remove these modifications.
+
+## Available Patches
 
 - **ApplicationWreqr**: Global channel on Application - `app.vent` `app.reqres` and `app.commands` were removed from Application as well as the `app.request` and `app.execute` shortcuts.
 - **childEvents**: `childEvents` was renamed `childViewEvents`
@@ -50,7 +54,7 @@ Patch({
 - Changes to `Marionette.deprecate` are not accounted for.
 
 
-###Unaccounted for breaking changes:
+### Unaccounted for breaking changes:
 
 - Region: before:show / show events in v2 passed the view, the region, and options, but in v3 pass the region, the view and options
 - Region: before:empty / empty events in v3 now pass the region as the first argument
