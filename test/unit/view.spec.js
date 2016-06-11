@@ -66,7 +66,7 @@ describe('base view', function() {
       expect(this.onDestroyStub).to.have.been.calledOnce.and.calledWith(this.argumentOne, this.argumentTwo);
     });
 
-    it('should remove the view', function() {
+    it.skip('should remove the view', function() {
       expect(this.view.remove).to.have.been.calledOnce;
     });
 
