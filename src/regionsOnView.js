@@ -46,9 +46,9 @@ export default function() {
     delete view[name];
   }
 
-  const listenTo = Backbone.Events.listenTo;
+  const listenTo = Backbone.View.listenTo;
 
-  Backbone.Events.listenTo = function(obj) {
+  Backbone.View.listenTo = function(obj) {
     if (obj.__deprecatedRegion) { dep(); }
     listenTo.apply(this, arguments);
   }

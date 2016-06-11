@@ -55,18 +55,11 @@ export default function() {
         return channelRequest.apply(this, arguments);
       };
 
-      const listenTo = Backbone.Events.listenTo;
+      const listenTo = Marionette.Object.listenTo;
 
-      Backbone.Events.listenTo = function(obj) {
+      Marionette.Object.listenTo = function(obj) {
         if (obj.__deprecateChannel) { dep(); }
         listenTo.apply(this, arguments);
-      };
-
-      const listenToOnce = Backbone.Events.listenToOnce;
-
-      Backbone.Events.listenToOnce = function(obj) {
-        if (obj.__deprecateChannel) { dep(); }
-        listenToOnce.apply(this, arguments);
       };
     }
   });

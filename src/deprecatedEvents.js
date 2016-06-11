@@ -3,15 +3,17 @@ import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
 
 export default function() {
-  const deprecatedEvents = ['render:collection'];
-
-  const listenTo = Backbone.Events.listenTo;
+  const deprecatedEvents = {
+    'render:collection': true
+  };
 
   const dep = function(name) {
     Marionette.deprecate(`${ name } event is deprecated.`);
   }
 
-  Backbone.Events.listenTo = function(obj, name) {
+  const listenTo = Backbone.View.listenTo;
+
+  Backbone.View.listenTo = function(obj, name) {
     if (deprecatedEvents[name]) { dep(name); }
     if (_.isObject(name)) {
       _.each(name, function(value, key) {
@@ -21,13 +23,15 @@ export default function() {
     listenTo.apply(this, arguments);
   }
 
-  Backbone.Events.once = function(name) {
+  const on = Backbone.View.on;
+
+  Backbone.View.on = function(name) {
     if (deprecatedEvents[name]) { dep(name); }
     if (_.isObject(name)) {
       _.each(name, function(value, key) {
         if (deprecatedEvents[key]) { dep(key); }
       });
     }
-    listenTo.apply(this, arguments);
+    on.apply(this, arguments);
   }
 };
