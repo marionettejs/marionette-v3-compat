@@ -18,6 +18,9 @@ module.exports = function() {
 
   Patch();
 
+  // hide dep notices for tests
+  Marionette.DEV_MODE = false;
+
   var $fixtures;
 
   function setFixtures() {

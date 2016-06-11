@@ -21,6 +21,7 @@ import templateHelpers from './templateHelpers';
 import triggerProxy from './triggerProxy';
 import viewOptions from './viewOptions';
 
+Marionette.DEV_MODE = true;
 Marionette.VERSION = 'marionette-v3-compat';
 
 Marionette._getValue = function(value, context, params) {
