@@ -5,11 +5,16 @@ export default function(privateFunction, publicFunction, deprecation, ClassName)
   const options = {};
 
   options[privateFunction] = function() {
+    this._nodep = true;
     return this[publicFunction].apply(this, arguments);
   }
 
   options[publicFunction] = function() {
-    Marionette.deprecate(deprecation);
+    if (this._nodep) {
+      this._nodep = false;
+    } else {
+      Marionette.deprecate(deprecation);
+    }
     return original.apply(this, arguments);
   }
 
