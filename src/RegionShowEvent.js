@@ -8,22 +8,16 @@ export default function() {
     Marionette.deprecate('Show events are no longer triggered on the View.  User render or attach.');
   }
 
-  const originalConstructor = Marionette.Region.prototype.constructor;
+  var regionTriggerMethod = Marionette.Region.prototype.triggerMethod;
 
-  Marionette.Region = Marionette.Region.extend({
-    constructor: function() {
-      this.on({
-        'before:show': function(region, view, options) {
-          Marionette.triggerMethodOn(view, 'before:show', view, region, options);
-        },
-        'show': function(region, view, options) {
-          Marionette.triggerMethodOn(view, 'show', view, region, options);
-
-        }
-      });
-      originalConstructor.apply(this, arguments);
+  Marionette.Region.prototype.triggerMethod = function(name, region, view, options) {
+    var result = regionTriggerMethod.apply(this, arguments);
+    if (name === 'before:show' || name === 'show') {
+      Marionette.triggerMethodOn(view, name, view, region, options);
     }
-  });
+
+    return result;
+  };
 
 
   // split the event name on the ":"
