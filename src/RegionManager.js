@@ -129,13 +129,11 @@ export default function() {
   // collection related features.
   // Borrowing this code from Backbone.Collection:
   // http://backbonejs.org/docs/backbone.html#section-121
-  Marionette.actAsCollection = function(object, listProperty) {
+  var _actAsCollection = function(object, listProperty) {
     var methods = ['forEach', 'each', 'map', 'find', 'detect', 'filter',
       'select', 'reject', 'every', 'all', 'some', 'any', 'include',
       'contains', 'invoke', 'toArray', 'first', 'initial', 'rest',
       'last', 'without', 'isEmpty', 'pluck'];
-
-    Marionette.deprecate('actAsCollection is deprecated and removed in v3.');
 
     _.each(methods, function(method) {
       object[method] = function() {
@@ -146,6 +144,12 @@ export default function() {
     });
   };
 
-  Marionette.actAsCollection(Marionette.RegionManager.prototype, '_regions');
+  Marionette.actAsCollection = function(object, listProperty) {
+    Marionette.deprecate('actAsCollection is deprecated and removed in v3.');
+
+    return _actAsCollection.apply(this, arguments);
+  }
+
+  _actAsCollection(Marionette.RegionManager.prototype, '_regions');
 
 }
