@@ -24,6 +24,13 @@ import viewOptions from './viewOptions';
 Marionette.DEV_MODE = true;
 Marionette.VERSION = 'marionette-v3-compat';
 
+// Add a console.trace to the deprecate message
+Marionette.deprecate._warn = function() {
+  const warn = Marionette.deprecate._console.warn || Marionette.deprecate._console.log || function() {};
+  console.trace();
+  return warn.apply(Marionette.deprecate._console, arguments);
+};
+
 Marionette._getValue = function(value, context, params) {
   if (_.isFunction(value)) {
     value = params ? value.apply(context, params) : value.call(context);
