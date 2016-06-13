@@ -475,7 +475,7 @@ describe('layoutView', function() {
     });
 
     it('should return the region', function() {
-      expect(this.layoutView.getRegion('regionOne')).to.equal(this.region);
+      expect(this.layoutView.getRegion('regionOne').cid).to.equal(this.region.cid);
     });
   });
 

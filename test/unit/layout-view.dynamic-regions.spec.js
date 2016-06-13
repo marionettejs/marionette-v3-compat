@@ -80,7 +80,7 @@ describe('layoutView - dynamic regions', function() {
     });
 
     it('should add the region to the layoutView', function() {
-      expect(this.layoutView.foo).to.equal(this.region);
+      expect(this.layoutView.foo.cid).to.equal(this.region.cid);
     });
 
     it('should set the parent of the region to the layoutView', function() {
@@ -117,7 +117,7 @@ describe('layoutView - dynamic regions', function() {
     });
 
     it('should add the region to the layoutView after it is rendered', function() {
-      expect(this.layoutView.foo).to.equal(this.region);
+      expect(this.layoutView.foo.cid).to.equal(this.region.cid);
     });
 
     it('should set the parent of the region to the layoutView', function() {
@@ -147,11 +147,11 @@ describe('layoutView - dynamic regions', function() {
     });
 
     it('should keep the original regions', function() {
-      expect(this.layoutView.bar).to.equal(this.barRegion);
+      expect(this.layoutView.bar.cid).to.equal(this.barRegion.cid);
     });
 
     it('should re-add the region to the layoutView after it is re-rendered', function() {
-      expect(this.layoutView.foo).to.equal(this.region);
+      expect(this.layoutView.foo.cid).to.equal(this.region.cid);
     });
 
     it('should set the parent of the region to the layoutView', function() {
@@ -182,7 +182,7 @@ describe('layoutView - dynamic regions', function() {
     });
 
     it('should re-add the region to the layoutView after it is re-rendered', function() {
-      expect(this.layoutView.foo).to.equal(this.region);
+      expect(this.layoutView.foo.cid).to.equal(this.region.cid);
     });
 
     it('should set the parent of the region to the layoutView', function() {
