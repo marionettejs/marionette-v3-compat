@@ -13,16 +13,11 @@ export default function() {
     const regionEmpty = region.empty;
     const regionReset = region.reset;
     const regionOn = region.on;
-    const regionOnce = region.once;
 
     const newRegion = _.extend({}, region, {
       on() {
         dep();
         regionOn.apply(this, arguments);
-      },
-      once() {
-        dep();
-        regionOnce.apply(this, arguments);
       },
       show() {
         dep();
@@ -46,17 +41,18 @@ export default function() {
     delete view[name];
   }
 
-  const listenTo = Backbone.View.listenTo;
+  const listenTo = Backbone.View.prototype.listenTo;
 
-  Backbone.View.listenTo = function(obj) {
+  Backbone.View.prototype.listenTo = function(obj) {
     if (obj.__deprecatedRegion) { dep(); }
     listenTo.apply(this, arguments);
   }
 
-  const initRegions = Marionette.LayoutView.prototype._initRegions;
+  const initRegions = Marionette.View.prototype._initRegions;
 
-  _.extend(Marionette.LayoutView.prototype, {
+  _.extend(Marionette.View.prototype, {
     _initRegions() {
+      this.regionClass = Marionette.Region;
       this.on({
         'add:region': _addRegion,
         'remove:region': _removeRegion
