@@ -1,5 +1,4 @@
 import _ from 'underscore';
-import Backbone from 'backbone';
 import Radio from 'backbone.radio';
 import Marionette from 'backbone.marionette';
 
