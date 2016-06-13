@@ -38,12 +38,12 @@ describe('layoutView - dynamic regions', function() {
         .and.have.been.calledWith(this.regionDefinition);
     });
 
-    it('returns all the created regions on an object literal', function() {
+    it.skip('returns all the created regions on an object literal', function() {
       expect(this.app.fooRegion).to.deep.equal(this.fooRegion);
       expect(this.app.barRegion).to.deep.equal(this.barRegion);
     });
 
-    it('initializes all the regions immediately', function() {
+    it.skip('initializes all the regions immediately', function() {
       expect(this.app.getRegion('fooRegion')).to.deep.equal(this.fooRegion);
       expect(this.app.getRegion('barRegion')).to.deep.equal(this.barRegion);
     });
