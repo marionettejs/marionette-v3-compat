@@ -59,6 +59,7 @@ If you are currently backporting v3 functionality or shimming in Radio for Wreqr
 - Region: before:show / show events in v2 passed the view, the region, and options, but in v3 pass the region, the view and options
 - Region: before:empty / empty events in v3 now pass the region as the first argument
 - Region: before:destroy / destroy events in v3 now pass the region as the first argument
+- Region: show({forceShow: true}) was removed. In v3 a view is rendered if it was not previously and it is show if it was not shown previously. If you need to retrigger events, either re-render or empty/show again.
 
 - Application: In v2 options passed while instantiating an Application were merged onto the Application. This was removed in v3 and not re-implemented here.
 
