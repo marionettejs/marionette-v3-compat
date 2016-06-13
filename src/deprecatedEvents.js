@@ -11,9 +11,9 @@ export default function() {
     Marionette.deprecate(`${ name } event is deprecated.`);
   }
 
-  const listenTo = Backbone.View.listenTo;
+  const listenTo = Backbone.View.prototype.listenTo;
 
-  Backbone.View.listenTo = function(obj, name) {
+  Backbone.View.prototype.listenTo = function(obj, name) {
     if (deprecatedEvents[name]) { dep(name); }
     if (_.isObject(name)) {
       _.each(name, function(value, key) {
@@ -23,9 +23,9 @@ export default function() {
     listenTo.apply(this, arguments);
   }
 
-  const on = Backbone.View.on;
+  const on = Backbone.View.prototype.on;
 
-  Backbone.View.on = function(name) {
+  Backbone.View.prototype.on = function(name) {
     if (deprecatedEvents[name]) { dep(name); }
     if (_.isObject(name)) {
       _.each(name, function(value, key) {
