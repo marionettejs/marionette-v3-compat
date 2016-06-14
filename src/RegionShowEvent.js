@@ -11,9 +11,12 @@ export default function() {
   var regionTriggerMethod = Marionette.Region.prototype.triggerMethod;
 
   Marionette.Region.prototype.triggerMethod = function(name, region, view, options) {
-    var result = regionTriggerMethod.apply(this, arguments);
+    var result;
     if (name === 'before:show' || name === 'show') {
+      result = regionTriggerMethod.call(this, name, view, region, options);
       Marionette.triggerMethodOn(view, name, view, region, options);
+    } else {
+      result = regionTriggerMethod.apply(this, arguments);
     }
 
     return result;
@@ -32,18 +35,32 @@ export default function() {
   var trigger = Backbone.Events.trigger;
 
   Backbone.Events.trigger = function(name) {
-    if (this.prototype instanceof Backbone.View || this === Backbone.View) {
+    var isView = this.prototype instanceof Backbone.View || this === Backbone.View;
+    var isRegion = this.prototype instanceof Marionette.Region || this === Marionette.Region;
+    if (isView || isRegion) {
       var methodName = 'on' + name.replace(splitter, getEventName);
       var method = (this.options && this.options[methodName]) || this[methodName];
 
       if (_.isFunction(method)) {
-        dep();
+        if (isView) {
+          dep();
+        } else {
+          if (method.length > 1) {
+            Marionette.deprecate('Region show events in v3 pass the region and the 1st argument and the view as the 2nd');
+          }
+        }
       }
 
       if (!this._events) { return this; }
 
       if ((name === 'before:show' || name === 'show') && this._events[name]) {
-        dep();
+        if (isView) {
+          dep();
+        } else {
+          if (this._events[name].length > 1) {
+            Marionette.deprecate('Region show events in v3 pass the region and the 1st argument and the view as the 2nd');
+          }
+        }
       }
     }
 
