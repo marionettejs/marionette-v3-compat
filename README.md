@@ -35,15 +35,18 @@ If you are currently backporting v3 functionality or shimming in Radio for Wreqr
 - **childEvents**: `childEvents` was renamed `childViewEvents`
 - **CollectionView**: `CollectionView` had a number of methods privatized
 - **Controller**: `Controller` was removed in v3
+- **deprecatedEvents**: throws deprecation notices for a number of removed events
+  - `render:collection` was renamed `render:children`
 - **getChildView**: `getChildView` was removed from both View and CollectionView as `childView` can now accept a function
 - **ItemView**: `Marionette.ItemView` is now `Marionette.View` in v3
 - **LayoutView**: `Marionette.LayoutView` is now `Marionette.View` in v3
 - **Module**: `Module` was removed in v3
-- **Region**: Region swap events were removed and `attachView` was privatized. By default `show` will not re-render a rendered view, so `attachView` is unnecessary.
+- **proxyFunctions**: `proxyGetOption`, `proxyBindEntityEvents` and `proxyUnbindEntityEvents` were removed. Use
+- **Region**: Region swap events and `attachView` were removed. By default `show` will not re-render a rendered view, so `attachView` is unnecessary.
 - **RegionManager**: `RegionManager` was removed in v3. The `Marionette.actAsCollection` utility was only used by `RegionManager`, so it was also removed.
 - **RegionShowEvent**: Showing a view in a region no longer triggers a show event on the View in v3
 - **regionsOnApplication**: Region instances are no longer appended to the Application.  Application has only one region and to access it use `getRegion`.
-- **regionsOnApplication**: Region instances are no longer appended to the View.  Use `getRegion` to get the region by name from the view.
+- **regionsOnView**: Region instances are no longer appended to the View.  Use `getRegion` to get the region by name from the view.
 - **RegionStaticMethods**: The static build methods for a Region were removed in v3.
 - **templateHelpers**: View's `templateHelpers` is now `templateContext` in v3
 - **triggerProxy**: View events proxied to a parent layout no longer automatically prepend the view as the 1st argument.
@@ -68,3 +71,6 @@ If you are currently backporting v3 functionality or shimming in Radio for Wreqr
 - View.serializeModel in v3 uses `this.model` and does not take `model` as an argument.
 - View.destroy in v3 doesn't call `Backbone.View.remove` directly however all pieces of it are called.  As long as someone isn't overriding remove in Backbone, this is a non-breaking change.
 - View.modelEvents and View.collectionEvents were bound on `delegateEvents` in v2, but it was separated in v3 into its own `delegateEntityEvents`.  Entity events are now only bound upon initialization.
+- View `add:region` and `remove:region` now pass the view as the 1st argument
+- View `childViewEvents` (previously named `childEvents`) are calculated and cached when the `events` has is delegated instead of on each `trigger`.
+- View - the v2 Layout's destroyImmediate is the default functionality of View's in v3.
