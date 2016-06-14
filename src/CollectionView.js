@@ -16,7 +16,7 @@ export default function() {
 
   Marionette.CollectionView = Marionette.CollectionView.extend({
     constructor() {
-      Backbone.Events.prototype.on.call(this, 'render:collection', function() { this.triggerMethod('render:children', this); });
+      Backbone.Events.on.call(this, 'render:collection', function() { this.triggerMethod('render:children', this); });
       originalConstructor.apply(this, arguments);
     },
     initRenderBuffer() {
