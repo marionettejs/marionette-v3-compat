@@ -70,6 +70,7 @@ If you are currently backporting v3 functionality or shimming in Radio for Wreqr
 - View.triggers in v2 passed a object to the handler containing the view, model, and collection.  In v3 instead of this option, simply the view is passed (which will contain the model or collection anyhow).
 - View.serializeModel in v3 uses `this.model` and does not take `model` as an argument.
 - View.destroy in v3 doesn't call `Backbone.View.remove` directly however all pieces of it are called.  As long as someone isn't overriding remove in Backbone, this is a non-breaking change.
+- View destroy events now pass the view as the 1st argument.
 - View.modelEvents and View.collectionEvents were bound on `delegateEvents` in v2, but it was separated in v3 into its own `delegateEntityEvents`.  Entity events are now only bound upon initialization.
 - View `add:region` and `remove:region` now pass the view as the 1st argument
 - View `childViewEvents` (previously named `childEvents`) are calculated and cached when the `events` has is delegated instead of on each `trigger`.
