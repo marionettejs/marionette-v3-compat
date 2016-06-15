@@ -2,6 +2,7 @@ import _ from 'underscore';
 import Marionette from 'backbone.marionette';
 
 import ApplicationWreqr from './ApplicationWreqr';
+import bindEntityEvents from './bindEntityEvents';
 import childEvents from './childEvents';
 import CollectionView from './CollectionView';
 import Controller from './Controller';
@@ -41,6 +42,7 @@ Marionette._getValue = function(value, context, params) {
 export default function(opts = {}) {
   const patches = _.extend({
     ApplicationWreqr,
+    bindEntityEvents,
     childEvents,
     CollectionView,
     Controller,
