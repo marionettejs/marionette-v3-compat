@@ -11,7 +11,7 @@ describe('item view', function() {
     this.templateStub = this.sinon.stub().returns(this.template);
   });
 
-  describe('when rendering without a valid template', function() {
+  describe.skip('when rendering without a valid template', function() {
     beforeEach(function() {
       this.view = new Marionette.ItemView();
     });

@@ -14,11 +14,18 @@ export default function() {
     return _.extend(target, templateContext);
   }
 
+  function mixinTemplateHelpers() {
+    Marionette.deprecate('mixinTemplateHelpers was renamed mixinTemplateContext in v3.');
+    mixinTemplateContext.apply(this, arguments);
+  }
+
   _.extend(Marionette.View.prototype, {
-    mixinTemplateContext
+    mixinTemplateContext,
+    mixinTemplateHelpers
   });
 
   _.extend(Marionette.CompositeView.prototype, {
-    mixinTemplateContext
+    mixinTemplateContext,
+    mixinTemplateHelpers
   });
 }
