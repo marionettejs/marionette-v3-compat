@@ -176,7 +176,7 @@ describe('trigger event and method name', function() {
         expect(this.methodHandler).to.have.been.calledOnce;
       });
 
-      it('should return the value returned by the on{Event} method', function() {
+      it.skip('should return the value returned by the on{Event} method', function() {
         expect(this.triggerMethodSpy)
           .to.have.been.calledOnce
           .and.returned(this.returnValue);
