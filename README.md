@@ -49,6 +49,7 @@ If you are currently backporting v3 functionality or shimming in Radio for Wreqr
 - **RegionShowEvent**: Showing a view in a region no longer triggers a show event on the View in v3
 - **regionsOnApplication**: Region instances are no longer appended to the Application.  Application has only one region and to access it use `getRegion`.
 - **regionsOnView**: Region instances are no longer appended to the View.  Use `getRegion` to get the region by name from the view.
+    - One caveat is this patch creates a new instance of the region. If you `listenTo` a region attached to the view it will not receive the events of the region from `getRegion`. The patch assumes some consistency.
 - **RegionStaticMethods**: The static build methods for a Region were removed in v3.
 - **templateHelpers**: View's `templateHelpers` is now `templateContext` in v3
 - **triggerProxy**: View events proxied to a parent layout no longer automatically prepend the view as the 1st argument.
@@ -79,5 +80,6 @@ If you are currently backporting v3 functionality or shimming in Radio for Wreqr
 - View destroy events now pass the view as the 1st argument.
 - View.modelEvents and View.collectionEvents were bound on `delegateEvents` in v2, but it was separated in v3 into its own `delegateEntityEvents`.  Entity events are now only bound upon initialization.
 - View `add:region` and `remove:region` now pass the view as the 1st argument
+- View does not have an attached `RegionManager`.
 - View `childViewEvents` (previously named `childEvents`) are calculated and cached when the `events` has is delegated instead of on each `trigger`.
 - View - the v2 Layout's destroyImmediate is the default functionality of View's in v3.
