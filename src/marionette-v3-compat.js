@@ -11,6 +11,7 @@ import getChildView from './getChildView';
 import ItemView from './ItemView';
 import LayoutView from './LayoutView';
 import Module from './Module';
+import normalizeUi from './normalizeUi';
 import proxyFunctions from './proxyFunctions';
 import Region from './Region';
 import RegionManager from './RegionManager';
@@ -51,6 +52,7 @@ export default function(opts = {}) {
     ItemView,
     LayoutView,
     Module,
+    normalizeUi,
     proxyFunctions,
     Region,
     RegionManager,

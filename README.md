@@ -42,6 +42,7 @@ If you are currently backporting v3 functionality or shimming in Radio for Wreqr
 - **ItemView**: `Marionette.ItemView` is now `Marionette.View` in v3
 - **LayoutView**: `Marionette.LayoutView` is now `Marionette.View` in v3
 - **Module**: `Module` was removed in v3
+- **normalizeUi**: `normalizeUIString`, `normalizeUIKeys` and `normalizeUIValues` were removed.
 - **proxyFunctions**: `proxyGetOption`, `proxyBindEntityEvents` and `proxyUnbindEntityEvents` were removed. Use
 - **Region**: Region swap events and `attachView` were removed. By default `show` will not re-render a rendered view, so `attachView` is unnecessary.
 - **RegionManager**: `RegionManager` was removed in v3. The `Marionette.actAsCollection` utility was only used by `RegionManager`, so it was also removed.
