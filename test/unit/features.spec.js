@@ -1,4 +1,4 @@
-describe('features', function() {
+describe.skip('features', function() {
 
   beforeEach(function() {
     Marionette.FEATURES = {};
