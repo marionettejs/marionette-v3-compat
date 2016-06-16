@@ -3,6 +3,25 @@ import Marionette from 'backbone.marionette';
 
 export default function() {
 
+  var originalBind = Marionette.bindEvents;
+  var originalUnbind = Marionette.unbindEvents;
+
+  Marionette.bindEvents = function(context, entity, bindings) {
+    if (_.isFunction(bindings)) {
+      Marionette.deprecate('bindEvents no longer accepts bindings as a function in v3');
+      bindings = bindings.call(context);
+    }
+    return originalBind(context, entity, bindings);
+  };
+
+  Marionette.unbindEvents = function(context, entity, bindings) {
+    if (_.isFunction(bindings)) {
+      Marionette.deprecate('unbindEvents no longer accepts bindings as a function in v3');
+      bindings = bindings.call(context);
+    }
+    return originalUnbind(context, entity, bindings);
+  };
+
   Marionette.bindEntityEvents = function(context, entity, bindings) {
     Marionette.deprecate('bindEntityEvents has been renamed to bindEvents in v3.');
     return Marionette.bindEvents(context, entity, bindings);

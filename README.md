@@ -32,6 +32,7 @@ If you are currently backporting v3 functionality or shimming in Radio for Wreqr
 ## Available Patches
 
 - **ApplicationWreqr**: Global channel on Application - `app.vent` `app.reqres` and `app.commands` were removed from Application as well as the `app.request` and `app.execute` shortcuts.
+- **bindEntityEvents**: All uses of `bindEntityEvents` were renamed `bindEvents` and `unbindEntityEvents` were renamed `unbindEvents`. Additionally these functions no longer accept `bindings` as a function. You must pass an object.
 - **childEvents**: `childEvents` was renamed `childViewEvents`
 - **CollectionView**: `CollectionView` had a number of methods privatized
 - **Controller**: `Controller` was removed in v3
