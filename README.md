@@ -60,6 +60,8 @@ If you are currently backporting v3 functionality or shimming in Radio for Wreqr
 
 ### Unaccounted for breaking changes:
 
+- In v2 many options passed on instantiation could be modified after instantiation. In v3, options are merged on instantiation and not used internally afterwards. To modify the option passed in on v3, modify the value on the instance itself.
+
 - Region: before:show / show events in v2 passed the view, the region, and options, but in v3 pass the region, the view and options
 - Region: before:empty / empty events in v3 now pass the region as the first argument
 - Region: before:destroy / destroy events in v3 now pass the region as the first argument
