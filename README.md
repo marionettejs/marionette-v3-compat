@@ -69,6 +69,8 @@ If you are currently backporting v3 functionality or shimming in Radio for Wreqr
 
 - Application: In v2 options passed while instantiating an Application were merged onto the Application. This was removed in v3 and not re-implemented here.
 
+- Object destroy events now pass the view as the 1st argument.
+
 - View.isRendered / View.isDestroyed flags in v2 are now functions in v3. This is not accounted for here.
 - View.triggers in v2 passed a object to the handler containing the view, model, and collection.  In v3 instead of this option, simply the view is passed (which will contain the model or collection anyhow).
 - View.serializeModel in v3 uses `this.model` and does not take `model` as an argument.
