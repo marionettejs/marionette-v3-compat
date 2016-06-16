@@ -5,6 +5,7 @@ import ApplicationWreqr from './ApplicationWreqr';
 import bindEntityEvents from './bindEntityEvents';
 import childEvents from './childEvents';
 import CollectionView from './CollectionView';
+import CompositeView from './CompositeView';
 import Controller from './Controller';
 import deprecatedEvents from './deprecatedEvents';
 import getChildView from './getChildView';
@@ -46,6 +47,7 @@ export default function(opts = {}) {
     bindEntityEvents,
     childEvents,
     CollectionView,
+    CompositeView,
     Controller,
     deprecatedEvents,
     getChildView,

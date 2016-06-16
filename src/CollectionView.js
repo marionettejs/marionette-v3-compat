@@ -14,9 +14,10 @@ export default function() {
 
   const originalConstructor = Marionette.CollectionView.prototype.constructor;
 
-  Marionette.CollectionView = Marionette.CollectionView.extend({
+  _.extend(Marionette.CollectionView.prototype, {
     constructor() {
-      Backbone.Events.on.call(this, 'render:collection', function() { this.triggerMethod('render:children', this); });
+      Backbone.Events.on.call(this, 'render:children', function() { this.triggerMethod('render:collection', this); });
+      Backbone.Events.on.call(this, 'before:render:children', function() { this.triggerMethod('before:render:collection', this); });
       originalConstructor.apply(this, arguments);
     },
     initRenderBuffer() {

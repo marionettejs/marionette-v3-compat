@@ -4,7 +4,8 @@ import Marionette from 'backbone.marionette';
 
 export default function() {
   const deprecatedEvents = {
-    'render:collection': true
+    'render:collection': true,
+    'render:template': true
   };
 
   const dep = function(name) {

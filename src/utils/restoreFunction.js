@@ -18,5 +18,5 @@ export default function(privateFunction, publicFunction, deprecation, ClassName)
     return original.apply(this, arguments);
   }
 
-  Marionette[ClassName] = Marionette[ClassName].extend(options);
+  _.extend(Marionette[ClassName].prototype, options);
 }
