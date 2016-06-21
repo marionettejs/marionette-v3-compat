@@ -1403,7 +1403,13 @@ describe('collection view', function() {
     describe('when collectionView is shown', function() {
       beforeEach(function() {
         suite.isBufferingOnChildShow = undefined;
-        this.collectionView.trigger('show');
+
+        this.setFixtures('<div id="region"></div>');
+        this.el = $('#region')[0];
+
+        this.region = new Backbone.Marionette.Region({el: this.el});
+
+        this.region.show(this.collectionView);
       });
 
       it('collectionView should not be buffering on childView show', function() {

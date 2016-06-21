@@ -14,12 +14,31 @@ export default function() {
     var result;
     if (name === 'before:show' || name === 'show') {
       result = regionTriggerMethod.call(this, name, view, region, options);
-      Marionette.triggerMethodOn(view, name, view, region, options);
+      if (!view._isShown) { Marionette.triggerMethodOn(view, name, view, region, options); }
+      if (name === 'show') { view._isShown = true; }
+      if (view.children) {
+        view.children.each(function(v) {
+          if (!v._isShown) { Marionette.triggerMethodOn(v, name, v); }
+          if (name === 'show') { v._isShown = true; }
+        });
+      }
     } else {
       result = regionTriggerMethod.apply(this, arguments);
     }
 
     return result;
+  };
+
+  var _addChildView = Marionette.CollectionView.prototype._addChildView;
+
+  Marionette.CollectionView.prototype._addChildView = function(view) {
+    _addChildView.apply(this, arguments);
+    if (this._isShown) {
+      if (!view._isShown) {
+        Marionette.triggerMethodOn(view, 'before:show', view); Marionette.triggerMethodOn(view, 'show', view);
+      }
+      view._isShown = true;
+    }
   };
 
 

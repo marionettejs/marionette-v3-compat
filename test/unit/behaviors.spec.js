@@ -315,6 +315,11 @@ describe('Behaviors', function() {
     describe('should call onShow when inside a CollectionView', function() {
 
       beforeEach(function() {
+        this.setFixtures('<div id="region"></div>');
+        this.el = $('#region')[0];
+
+        this.region = new Backbone.Marionette.Region({el: this.el});
+
         this.CollectionView = Marionette.CollectionView.extend({
           childView: this.View
         });
@@ -322,8 +327,7 @@ describe('Behaviors', function() {
         this.collection     = new Backbone.Collection([{}]);
         this.collectionView = new this.CollectionView({collection: this.collection});
 
-        this.collectionView.render();
-        this.collectionView.triggerMethod('show');
+        this.region.show(this.collectionView);
       });
 
       it('should call onShow when inside a CollectionView', function() {

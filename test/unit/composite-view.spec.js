@@ -186,7 +186,12 @@ describe('composite view', function() {
 
       this.onShow = [];
 
-      this.compositeView.trigger('show');
+      this.setFixtures('<div id="region"></div>');
+      this.el = $('#region')[0];
+
+      this.region = new Backbone.Marionette.Region({el: this.el});
+
+      this.region.show(this.compositeView);
     });
 
     it('should call "onShowCallbacks.add"', function() {
