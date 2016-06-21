@@ -39,7 +39,7 @@ If you are currently backporting v3 functionality or shimming in Radio for Wreqr
 - **deprecatedEvents**: throws deprecation notices for a number of removed events
   - `render:collection` was renamed `render:children`
   - 'render:template' is no longer triggered.
-- **getChildView**: `getChildView` was removed from both View and CollectionView as `childView` can now accept a function
+- **getChildView**: `getChildView` was removed from CollectionView as `childView` can now accept a function. Also `getEmptyView` was removed from CollectionView as `emptyView` can now accept a function.
 - **ItemView**: `Marionette.ItemView` is now `Marionette.View` in v3
 - **LayoutView**: `Marionette.LayoutView` is now `Marionette.View` in v3
 - **Module**: `Module` was removed in v3
@@ -73,6 +73,8 @@ If you are currently backporting v3 functionality or shimming in Radio for Wreqr
 - Application: In v2 options passed while instantiating an Application were merged onto the Application. This was removed in v3 and not re-implemented here.
 
 - Object destroy events now pass the view as the 1st argument.
+
+- CollectionView.isEmpty is no longer passed the `collection` as the first argument.
 
 - View.isRendered / View.isDestroyed flags in v2 are now functions in v3. This is not accounted for here.
 - View.triggers in v2 passed a object to the handler containing the view, model, and collection.  In v3 instead of this option, simply the view is passed (which will contain the model or collection anyhow).

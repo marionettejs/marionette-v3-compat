@@ -6,7 +6,7 @@ export default function() {
   const originalPublicGetChildView = Marionette.View.prototype.getChildView;
 
   restoreFunction('_getChildView', 'getChildView', 'getChildView is deprecated. Use childView instead.', 'CollectionView');
-  restoreFunction('_getChildView', 'getChildView', 'getChildView is deprecated. Use childView instead.', 'View');
+  restoreFunction('_getEmptyView', 'getEmptyView', 'getEmptyView is deprecated. Use emptyView instead.', 'View');
 
   const restoredPublicGetChildView = Marionette.View.prototype.getChildView;
 
