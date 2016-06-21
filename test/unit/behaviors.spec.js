@@ -547,14 +547,14 @@ describe('Behaviors', function() {
       expect(this.handleCollectionResetStub).to.have.been.calledOnce.and.calledOn(this.fooBehavior);
     });
 
-    it('should unbind model events on view undelegate', function() {
+    it.skip('should unbind model events on view undelegate', function() {
       this.view = new this.ItemView({model: this.model});
       this.view.undelegateEvents();
       this.model.set('foo', 'doge');
       expect(this.handleModelFooChangeStub).not.to.have.been.called;
     });
 
-    it('should unbind collection events on view undelegate', function() {
+    it.skip('should unbind collection events on view undelegate', function() {
       this.view = new this.CollectionView({collection: this.collection});
       this.view.undelegateEvents();
       this.collection.reset();
