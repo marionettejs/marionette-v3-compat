@@ -3,7 +3,6 @@ module.exports = function() {
   var Backbone = require('backbone');
   var jQuery = require('jquery');
   Backbone.$ = jQuery;
-  Backbone.ChildViewContainer = require('backbone.babysitter');
   Backbone.Radio = require('backbone.radio');
   var Marionette = require('backbone.marionette');
   var Patch = require('../../src/marionette-v3-compat');
