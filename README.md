@@ -12,7 +12,7 @@ You can turn off certain patches by passing an object setting patches to false.
 
 ```js
 // main.js
-import _ from 'underscrore';
+import _ from 'underscore';
 import Backbone from 'backbone';
 import Marionette from 'backbone.marionette'
 

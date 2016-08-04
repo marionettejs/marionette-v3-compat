@@ -1,4 +1,4 @@
-import _ from 'underscrore';
+import _ from 'underscore';
 import Marionette from 'backbone.marionette';
 export default function() {
 
