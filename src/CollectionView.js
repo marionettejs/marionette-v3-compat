@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import Marionette from 'backbone.marionette';
 import restoreFunction from './utils/restoreFunction';
 export default function() {
