@@ -1370,7 +1370,7 @@ describe('collection view', function() {
     });
   });
 
-  describe('when a collection is reset child views should not be shown until the buffering is over', function() {
+  describe.skip('when a collection is reset child views should not be shown until the buffering is over', function() {
     var suite;
 
     beforeEach(function() {
