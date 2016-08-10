@@ -5,7 +5,7 @@ export default function() {
 
   const originalConstructor = Marionette.View.prototype.constructor;
 
-  Marionette.View = Marionette.View.extend({
+  _.extend(Marionette.View.prototype, {
     constructor(options) {
       const args = Array.prototype.slice.call(arguments);
 
@@ -15,9 +15,7 @@ export default function() {
         args[0] = options;
       }
 
-
       originalConstructor.apply(this, args);
-    },
-
+    }
   });
 };
