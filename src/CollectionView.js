@@ -1,4 +1,3 @@
-import _ from 'underscore';
 import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
 import restoreFunction from './utils/restoreFunction';
@@ -16,7 +15,7 @@ export default function() {
 
   const originalConstructor = Marionette.CollectionView.prototype.constructor;
 
-  _.extend(Marionette.CollectionView.prototype, {
+  Marionette.CollectionView = Marionette.CollectionView.extend({
     constructor() {
       Backbone.Events.on.call(this, 'render:children', function() { this.triggerMethod('render:collection', this); });
       Backbone.Events.on.call(this, 'before:render:children', function() { this.triggerMethod('before:render:collection', this); });
@@ -27,4 +26,16 @@ export default function() {
       this._bufferedChildren = [];
     }
   });
+
+  const originalConstructorComp = Marionette.CompositeView.prototype.constructor;
+
+  Marionette.CompositeView = Marionette.CompositeView.extend({
+    constructor() {
+      Backbone.Events.on.call(this, 'render:children', function() { this.triggerMethod('render:collection', this); });
+      Backbone.Events.on.call(this, 'before:render:children', function() { this.triggerMethod('before:render:collection', this); });
+      originalConstructorComp.apply(this, arguments);
+    }
+  });
+
 }
+
