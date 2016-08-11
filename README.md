@@ -77,6 +77,7 @@ If you are currently backporting v3 functionality or shimming in Radio for Wreqr
 
 - CollectionView.isEmpty is no longer passed the `collection` as the first argument.
 - CollectionView `onAddChild` and `onRemoveChild` are now passed the collectionView as the 1st argument and the childView as the second.
+- CollectionView.renderChildView was removed entirely
 
 - View.delegateEvents / View.undelegateEvents no longer delegate entity events. Those are delegated separately in v3.
 - View.isRendered / View.isDestroyed flags in v2 are now functions in v3. This is not accounted for here.

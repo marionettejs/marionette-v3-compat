@@ -275,7 +275,7 @@ describe('collection view', function() {
     });
   });
 
-  describe('when rendering a childView', function() {
+  describe.skip('when rendering a childView', function() {
     beforeEach(function() {
       this.collection = new Backbone.Collection([{foo: 'bar'}]);
       this.collectionView = new this.CollectionView({
