@@ -1,4 +1,4 @@
-describe('onAttach', function() {
+describe.skip('onAttach', function() {
   'use strict';
 
   beforeEach(function() {
