@@ -25,6 +25,11 @@ import triggerProxy from './triggerProxy';
 import viewOptions from './viewOptions';
 
 Marionette.DEV_MODE = true;
+
+if (!Marionette || Marionette.VERSION.charAt(0) !== '3') {
+  alert('marionette-v3-compat patches Marionette v3 to act like v2. Marionette v3 not found.');
+}
+
 Marionette.VERSION = 'marionette-v3-compat';
 
 // Add a console.trace to the deprecate message
