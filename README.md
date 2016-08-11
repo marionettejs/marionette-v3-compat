@@ -38,6 +38,7 @@ If you are currently backporting v3 functionality or shimming in Radio for Wreqr
 - **Controller**: `Controller` was removed in v3
 - **deprecatedEvents**: throws deprecation notices for a number of removed events
   - `render:collection` was renamed `render:children`
+  - `destroy:collection` was renamed `destroy:children`
   - 'render:template' is no longer triggered.
 - **getChildView**: `getChildView` was removed from CollectionView as `childView` can now accept a function. Also `getEmptyView` was removed from CollectionView as `emptyView` can now accept a function.
 - **ItemView**: `Marionette.ItemView` is now `Marionette.View` in v3

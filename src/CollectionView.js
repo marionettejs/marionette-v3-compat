@@ -19,6 +19,10 @@ export default function() {
     constructor() {
       Backbone.Events.on.call(this, 'render:children', function() { this.triggerMethod('render:collection', this); });
       Backbone.Events.on.call(this, 'before:render:children', function() { this.triggerMethod('before:render:collection', this); });
+
+      Backbone.Events.on.call(this, 'destroy:children', function() { this.triggerMethod('destroy:collection', this); });
+      Backbone.Events.on.call(this, 'before:destroy:children', function() { this.triggerMethod('before:destroy:collection', this); });
+
       originalConstructor.apply(this, arguments);
     },
     initRenderBuffer() {
@@ -33,6 +37,9 @@ export default function() {
     constructor() {
       Backbone.Events.on.call(this, 'render:children', function() { this.triggerMethod('render:collection', this); });
       Backbone.Events.on.call(this, 'before:render:children', function() { this.triggerMethod('before:render:collection', this); });
+
+      Backbone.Events.on.call(this, 'destroy:children', function() { this.triggerMethod('destroy:collection', this); });
+      Backbone.Events.on.call(this, 'before:destroy:children', function() { this.triggerMethod('before:destroy:collection', this); });
       originalConstructorComp.apply(this, arguments);
     }
   });

@@ -5,6 +5,7 @@ import Marionette from 'backbone.marionette';
 export default function() {
   const deprecatedEvents = {
     'render:collection': true,
+    'destroy:collection:': true,
     'render:template': true
   };
 
