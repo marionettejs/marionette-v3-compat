@@ -8,6 +8,16 @@ export default function() {
     Marionette.deprecate('Show events are no longer triggered on the View.  User render or attach.');
   }
 
+  function triggerOnChildren(children, name) {
+    if (!children) { return; }
+
+    children.each(function(v) {
+      if (!v._isShown) { Marionette.triggerMethodOn(v, name, v); }
+      if (name === 'show') { v._isShown = true; }
+    });
+  }
+
+
   var regionTriggerMethod = Marionette.Region.prototype.triggerMethod;
 
   Marionette.Region.prototype.triggerMethod = function(name, region, view, options) {
@@ -15,11 +25,12 @@ export default function() {
     if (name === 'before:show' || name === 'show') {
       result = regionTriggerMethod.call(this, name, view, region, options);
       if (!view._isShown) { Marionette.triggerMethodOn(view, name, view, region, options); }
-      if (name === 'show') { view._isShown = true; }
-      if (view.children) {
-        view.children.each(function(v) {
-          if (!v._isShown) { Marionette.triggerMethodOn(v, name, v); }
-          if (name === 'show') { v._isShown = true; }
+      if (name === 'show') {
+        view._isShown = true;
+        triggerOnChildren(view.children, name);
+      } else {
+        view.once('render', function() {
+          triggerOnChildren(view.children, name);
         });
       }
     } else {
@@ -32,10 +43,18 @@ export default function() {
   var _addChildView = Marionette.CollectionView.prototype._addChildView;
 
   Marionette.CollectionView.prototype._addChildView = function(view) {
+    view.once('render', function() {
+      // trigger the 'before:show' event on `view` if the collection view has already been shown
+      if (this._isShown && !this._isBuffering) {
+        Marionette.triggerMethodOn(view, 'before:show', view);
+      }
+    }, this);
+
     _addChildView.apply(this, arguments);
-    if (this._isShown) {
+
+    if (this._isShown && !this._isBuffering) {
       if (!view._isShown) {
-        Marionette.triggerMethodOn(view, 'before:show', view); Marionette.triggerMethodOn(view, 'show', view);
+        Marionette.triggerMethodOn(view, 'show', view);
       }
       view._isShown = true;
     }
