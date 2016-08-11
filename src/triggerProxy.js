@@ -37,11 +37,47 @@ export default function() {
     return triggerParent.apply(this, [eventName].concat(args));
   }
 
+  function _proxyChildEvents(view) {
+    var prefix = this.getOption('childViewEventPrefix');
+
+    // Forward all child view events through the parent,
+    // prepending "childview:" to the event name
+    this.listenTo(view, 'all', function() {
+      var args = _.toArray(arguments);
+      var rootEvent = args[0];
+
+
+      var childViewEvents = this.normalizeMethods(this._childViewEvents);
+
+      // call collectionView childViewEvent if defined
+      if (typeof childViewEvents !== 'undefined' && _.isFunction(childViewEvents[rootEvent])) {
+        childViewEvents[rootEvent].apply(this, [view].concat(_.rest(args)));
+      }
+
+      // use the parent view's proxyEvent handlers
+      var childViewTriggers = this._childViewTriggers;
+
+      // Call the event with the proxy name on the parent layout
+      if (childViewTriggers && _.isString(childViewTriggers[rootEvent])) {
+        this.triggerMethod.apply(this, [childViewTriggers[rootEvent]].concat(args));
+      }
+
+      args[0] = prefix + ':' + rootEvent;
+      args.splice(1, 0, view);
+
+      this.triggerMethod.apply(this, args);
+    });
+  }
+
   _.extend(Marionette.View.prototype, {
     _triggerEventOnParentLayout
   });
 
   _.extend(Marionette.CompositeView.prototype, {
     _triggerEventOnParentLayout
+  });
+
+  _.extend(Marionette.CollectionView.prototype, {
+    _proxyChildEvents
   });
 }
