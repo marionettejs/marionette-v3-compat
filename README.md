@@ -4,7 +4,7 @@ Transitional monkey patch to make Marionette v3 compatible with v2.
 **Do NOT use this library in production!** This library is meant as a transitional tool only.
 It is not guaranteed to be 100% backwards compatible and it will certainly be less performant.
 
-Currently using v3.0.0-pre.4.
+Currently using v3.0.0-pre.5.
 
 Include and execute this library directly after marionette prior to using the library.
 
