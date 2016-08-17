@@ -90,3 +90,4 @@ If you are currently backporting v3 functionality or shimming in Radio for Wreqr
 - View does not have an attached `RegionManager`.
 - View `childViewEvents` (previously named `childEvents`) are calculated and cached when the `events` has is delegated instead of on each `trigger`.
 - View - the v2 Layout's destroyImmediate is the default functionality of View's in v3.
+- LayoutView.regions were passed the `options` from the view's instantiation due to the `getOption` not being available. This is no longer the case in v3 and `getOption` (or `this.options`) will work to get options.
