@@ -20,6 +20,10 @@ export default function() {
       }
       this._ensureView(view);
       if (view === this.currentView) { return this; }
+      if (view._isRendered) {
+        view.render();
+        Marionette.deprecate('Rendered views shown in a Region are not re-rendered in v3.');
+      }
       var isChangingView = !!this.currentView;
       if (isChangingView) {
         this.triggerMethod('before:swapOut', this.currentView, this, options);
