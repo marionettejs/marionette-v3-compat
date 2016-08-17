@@ -22,17 +22,22 @@ export default function() {
 
   Marionette.Region.prototype.triggerMethod = function(name, region, view, options) {
     var result;
-    if (name === 'before:show' || name === 'show') {
-      result = regionTriggerMethod.call(this, name, view, region, options);
-      if (!view._isShown) { Marionette.triggerMethodOn(view, name, view, region, options); }
-      if (name === 'show') {
-        view._isShown = true;
-        triggerOnChildren(view.children, name);
-      } else {
+
+    if (name === 'before:show') {
+      result = regionTriggerMethod.call(this, 'before:show', view, region, options);
+      if (!view._isShown) {
         view.once('render', function() {
-          triggerOnChildren(view.children, name);
+          Marionette.triggerMethodOn(view, 'before:show', view, region, options);
         });
       }
+      view.once('render', function() {
+        triggerOnChildren(view.children, name);
+      });
+    } else if (name === 'show') {
+      result = regionTriggerMethod.call(this, 'show', view, region, options);
+      if (!view._isShown) { Marionette.triggerMethodOn(view, 'show', view, region, options); }
+      view._isShown = true;
+      triggerOnChildren(view.children, name);
     } else {
       result = regionTriggerMethod.apply(this, arguments);
     }
