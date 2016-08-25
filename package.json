@@ -1,7 +1,7 @@
 {
   "name": "marionette-v3-compat",
   "description": "A Marionette v3 upgrade tool",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/marionettejs/backbone.marionette",
   "main": "lib/marionette-v3-compat.js",
   "keywords": [
