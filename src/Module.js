@@ -7,7 +7,6 @@ export default function() {
   const originalConstructor = Marionette.Application.prototype.constructor;
 
   Marionette.Deferred = function() {
-    Marionette.deprecate('Marionette.Deferred is deprecated and removed in v3.');
     return Backbone.$.Deferred.apply(this, arguments);
   };
 
